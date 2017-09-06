@@ -4,5 +4,5 @@
 from . import models
 
 
-class User(models.User):
+class DrinkRecord(models.DrinkRecord):
     pass

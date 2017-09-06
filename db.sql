@@ -11,6 +11,7 @@ create table `user` (
     `province` varchar(128) default null comment '省份',
     `city` varchar(128) default null comment '城市',
     `country` varchar(128) default null comment '国家',
+    `isDeleted` int(1) default 0 comment '1已删除 0未删除',
     `gmtModify` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NULL COMMENT '更新时间', 
     `gmtCreate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
     KEY `idx_unionId` (`unionId`)
@@ -20,7 +21,8 @@ create table `user` (
 create table `drink_record` (
     `id` bigint(64) not null auto_increment primary key,
     `userId` bigint(64) not null comment '用户ID',
-    `status` int(1) not null comment '状态: -1已删除、0初始、1已完成、2已过期',
+    `status` int(1) not null comment '状态: 0初始、1已完成、2已过期',
+    `isDeleted` int(1) default 0 comment '1已删除 0未删除',
     `expireTime` datetime not null comment '过期时间',
     `gmtModify` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NULL COMMENT '更新时间', 
     `gmtCreate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',

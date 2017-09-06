@@ -14,8 +14,31 @@ from .. import db
 
 
 class BaseModel:
+    """
+    Base DB Model
+    
+    Every table must have isDeleted, then can use the function of query with valid data !!!
+    queryAll is the origin query function !!!
+    """
 
     db = db
+
+    # save or update
+    def save(self):
+        self.db.session.add(self)
+        self.db.session.commit()
+
+    def delete(self):
+        self.isDeleted = 1
+        self.save()
+
+    @classmethod
+    def query(cls):
+        return cls.query.filter(cls.isDeleted == 0)
+
+    @classmethod
+    def queryAll(cls):
+        return cls.query
 
 
 class User(db.Model, BaseModel):
@@ -29,6 +52,7 @@ class User(db.Model, BaseModel):
     province = Column(String(128))
     city = Column(String(128))
     country = Column(String(128))
+    isDeleted = Column(Integer)
 
     def __init__(self, unionId, nickName, avatarUrl, gender, province=None, city=None, country=None):
         self.unionId = unionId 
@@ -50,6 +74,7 @@ class DrinkRecord(db.Model, BaseModel):
     userId = Column(BigInteger)
     status = Column(Integer)
     expireTime = Column(DateTime)
+    isDeleted = Column(Integer)
 
     def __init__(self, id, userId, status, expireTime):
         self.id = id
