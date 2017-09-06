@@ -5,4 +5,11 @@ from . import models
 
 
 class User(models.User):
-    pass
+
+    @classmethod
+    def queryByUnionId(cls, unionId):
+        return cls.query.filter_by(unionId=unionId).first()
+
+    @classmethod
+    def queryById(cls, id):
+        return cls.query.filter_by(id=id).first()

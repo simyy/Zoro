@@ -40,6 +40,14 @@ class BaseModel:
     def queryAll(cls):
         return cls.query
 
+    @classmethod
+    def queryById(cls, id):
+        return cls.query.filter_by(id=id).first()
+
+    @classmethod
+    def queryByIds(cls, ids):
+        return cls.query.filter(cls.id.in_(ids)).all()
+
 
 class User(db.Model, BaseModel):
     __tablename__ = 'user'
