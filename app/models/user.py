@@ -4,9 +4,8 @@
 from . import models
 
 
-class User(models.BaseModel, models.User):
+class User(models.User):
 
     def save(self):
         self.db.session.add(self)
         self.db.session.commit()
-

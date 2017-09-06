@@ -18,7 +18,7 @@ class BaseModel:
     db = db
 
 
-class User(db.Model):
+class User(db.Model, BaseModel):
     __tablename__ = 'user'
 
     id   = Column(BigInteger, primary_key=True)
@@ -43,7 +43,7 @@ class User(db.Model):
         return '<User %s>' % self.id
 
 
-class DrinkRecord(db.Model):
+class DrinkRecord(db.Model, BaseModel):
     __tablename__ = 'drink_record'
 
     id = Column(BigInteger, primary_key=True)
