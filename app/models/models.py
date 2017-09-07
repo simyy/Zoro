@@ -12,6 +12,12 @@ from sqlalchemy import Text
 
 from .. import db
 
+
+class BaseModel:
+
+    db = db
+
+
 class User(db.Model):
     __tablename__ = 'user'
 
