@@ -4,7 +4,7 @@
 import os
 from app import create_app
 from app import db
-from app.models import models
+from app import models
 from flask_script  import Manager
 from flask_script  import Shell
 from flask_migrate import Migrate

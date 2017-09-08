@@ -7,7 +7,7 @@ from flask import session
 from flask import url_for
 from .  import main
 from .. import db
-from ..models.models import User
+from ..models import User
 
 
 @main.route('/', methods=['GET', 'POST'])
