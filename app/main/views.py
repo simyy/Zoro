@@ -12,6 +12,8 @@ from ..models import User
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    print(User.query.all())
+    user = User.query.all()
+    if user:
+        print(user[0])
     #return 'Hello'
     return render_template('index.html')

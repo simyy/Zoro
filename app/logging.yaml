@@ -1,0 +1,34 @@
+version: 1
+formatters:
+    default: 
+        format: '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'
+handlers: 
+    console:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: default
+        stream: ext://sys.stdout
+    error:
+        class: logging.handlers.RotatingFileHandler
+        level: ERROR
+        formatter: default
+        filename: logs/error.log
+        maxBytes: 1024
+        backupCount: 3
+        encoding: utf8
+    info:
+        class: logging.handlers.RotatingFileHandler
+        level: INFO
+        formatter: default
+        filename: logs/info.log
+        maxBytes: 1024
+        backupCount: 3
+        encoding: utf8
+loggers:
+    Zoro:
+        level: ERROR
+        handlers: [error, info]
+        propagate: no 
+root:
+    level: DEBUG
+    handlers: [console]

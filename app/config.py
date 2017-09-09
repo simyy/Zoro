@@ -20,9 +20,11 @@ class DevelopmentConfig(Config):
 
 
 class TestingConfig(Config):
+    DEBUG = True
     TESTING = True
 
 class ProductionConfig(Config):
+    DEBUG = False
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost/Zoro?charset=utf8"
 
 
