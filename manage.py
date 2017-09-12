@@ -9,6 +9,7 @@ import werkzeug.serving
 from app import create_app
 from app import db
 from app import models
+from app import exception
 from flask_script  import Manager
 from flask_script  import Shell
 from flask_migrate import Migrate
@@ -21,7 +22,7 @@ manager = Manager(app)
 migrate = Migrate(app, db)
 
 def make_shell_context():
-    return dict(app=app, db=db, models=models, logger=app.config.logger)
+    return dict(app=app, db=db, models=models, logger=app.config.logger, exception=exception)
 
 
 manager.add_command("shell", Shell(make_context=make_shell_context))

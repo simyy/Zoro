@@ -22,6 +22,14 @@ class DrinkRecord(db.Model, BaseModel):
     def __repr__(self):
         return '<DrinkRecord %s>' % self.id
 
+    def __str__(self):
+        return '<DrinkRecord %s>' % self.id
+
     @classmethod
     def queryByUserId(cls, userId):
         return cls.query.filter_by(userId=userId).all()
+
+    @classmethod
+    def queryByDate(cls, date):
+        pass
+
