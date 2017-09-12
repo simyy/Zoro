@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+import logging
+
 from flask import render_template
 from flask import redirect
-from flask import session
 from flask import url_for
 from .  import main
-from .. import db
 from ..models import User
 
 
@@ -14,6 +14,5 @@ from ..models import User
 def index():
     user = User.query.all()
     if user:
-        print(user[0])
-    #return 'Hello'
+        logging.info(user)
     return render_template('index.html')

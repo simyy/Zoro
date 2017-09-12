@@ -12,6 +12,16 @@ from app.config import config
 db = SQLAlchemy()
 
 
+def init_logging():
+    with open('app/logging.yaml') as f:
+        D = yaml.load(f)
+        D.setdefault('version', 1)
+        logging.config.dictConfig(D)
+        return logging.getLogger()
+
+logger = init_logging()
+
+
 def create_app(config_name):
     print(config_name)
     app = Flask(__name__, template_folder="templates")
@@ -24,7 +34,6 @@ def create_app(config_name):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
     db.init_app(app)
 
-    logger = init_logging()
     app.config.logger = logger
    
     # attack routes and cunstom err pages here
@@ -32,11 +41,3 @@ def create_app(config_name):
     app.register_blueprint(main_blueprint)
 
     return app
-
-
-def init_logging():
-    with open('app/logging.yaml') as f:
-        D = yaml.load(f)
-        D.setdefault('version', 1)
-        logging.config.dictConfig(D)
-        return logging.getLogger("Zoro")

@@ -26,9 +26,8 @@ handlers:
         encoding: utf8
 loggers:
     Zoro:
-        level: ERROR
+        level: INFO
         handlers: [error, info]
-        propagate: no 
 root:
     level: DEBUG
-    handlers: [console]
+    handlers: [console, error, info]
