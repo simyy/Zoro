@@ -28,3 +28,11 @@ create table `drink_record` (
     `gmtCreate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
     KEY `idx_userId_status` (`userId`, `status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 comment '喝水记录';
+
+# 喝水推荐时间
+create table `drink_recommend` (
+    `id` bigint(64) not null auto_increment primary key,
+    `expireTime` datetime not null comment '过期时间',
+    `gmtModify` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NULL COMMENT '更新时间', 
+    `gmtCreate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 comment '喝水推荐';
