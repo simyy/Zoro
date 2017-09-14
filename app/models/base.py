@@ -23,16 +23,20 @@ class BaseModel:
 
     db = db
 
-    # save or update
     def save(self):
+        '''dave or update'''
         self.db.session.add(self)
         self.db.session.commit()
 
     def delete(self):
+        '''delete by status'''
         self.isDeleted = 1
         self.save()
 
-    def _repr__(self):
+    def __str__(self):
+        return '<%s %s>' % (type(self).__name__ ,self.id)  
+
+    def __repr__(self):
         return '<%s %s>' % (type(self).__name__ ,self.id)  
 
     @classmethod
@@ -43,10 +47,12 @@ class BaseModel:
 
     @classmethod
     def query(cls):
+        '''query of valid status'''
         return cls.query.filter(cls.isDeleted == 0)
 
     @classmethod
     def queryAll(cls):
+        '''query with delete ones'''
         return cls.query
 
     @classmethod
