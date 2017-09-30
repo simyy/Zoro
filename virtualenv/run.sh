@@ -28,7 +28,7 @@ echo "Current PATH: $PATH"
 
 if [ ! -d "$PATH/zoro" ];then
     cd $PATH
-    virtualenv -p python3 zoro
+    `virtualenv -p python3 zoro`
 fi
 
 # git
