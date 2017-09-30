@@ -5,6 +5,9 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
+APP_NAME = 'Zoro'
+
+
 class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY") or "testkey123#125@@!K"
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True

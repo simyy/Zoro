@@ -6,8 +6,8 @@ import logging.config
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from .config import APP_NAME
 from app.config import config
-
 
 db = SQLAlchemy()
 
@@ -24,7 +24,8 @@ logger = init_logging()
 
 def create_app(config_name):
     print(config_name)
-    app = Flask(__name__, template_folder="templates")
+    print('app name:', APP_NAME)
+    app = Flask(APP_NAME, template_folder="templates")
 
     @app.route('/static/<path:path>')
     def static_files():
