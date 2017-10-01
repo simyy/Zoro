@@ -23,9 +23,7 @@ logger = init_logging()
 
 
 def create_app(config_name):
-    print(config_name)
-    print('app name:', APP_NAME)
-    app = Flask(APP_NAME, template_folder="templates")
+    app = Flask(__name__, template_folder="templates")
 
     @app.route('/static/<path:path>')
     def static_files():
