@@ -12,6 +12,8 @@ from sqlalchemy import Text
 
 from .. import db
 
+import json
+
 
 class BaseModel:
     """
@@ -34,7 +36,8 @@ class BaseModel:
         self.save()
 
     def __str__(self):
-        return '<%s %s>' % (type(self).__name__ ,self.id)  
+        return json.dumps(self.__dict__)
+        #return '<%s %s>' % (type(self).__name__ ,self.id)  
 
     def __repr__(self):
         return '<%s %s>' % (type(self).__name__ ,self.id)  
