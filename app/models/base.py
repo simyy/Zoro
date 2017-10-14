@@ -36,8 +36,7 @@ class BaseModel:
         self.save()
 
     def __str__(self):
-        return json.dumps(self.__dict__)
-        #return '<%s %s>' % (type(self).__name__ ,self.id)  
+        return '<%s %s>' % (type(self).__name__ ,self.id)  
 
     def __repr__(self):
         return '<%s %s>' % (type(self).__name__ ,self.id)  
@@ -66,3 +65,14 @@ class BaseModel:
     def queryByIds(cls, ids):
         return cls.query.filter(cls.id.in_(ids)).all()
 
+    def toJson(self):
+         record = {}
+         # 检索结果集的行记录
+         for field in self.__dict__:
+             if not field.startswith('_') and hasattr(self.__getattribute__(field), '__call__') == False:
+                 data = self.__getattribute__(field)
+                 try:
+                     record[field] = data
+                 except TypeError:
+                     record[field] = None
+         return record

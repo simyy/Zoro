@@ -22,6 +22,5 @@ def index():
 @main.route('/json', methods=['GET', 'POST'])
 def testJson():
     users = User.query.all()
-    datas = [{"id": user.id, "nickName": user.nickName} for user in users]
-    data = PagerData(0, 10, datas)
+    data = PagerData(0, 10, users)
     return SuccessResponse.of(data)

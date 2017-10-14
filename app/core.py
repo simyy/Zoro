@@ -61,5 +61,9 @@ class PagerData:
             self.offset += limit
 
     def toJson(self):
-        return {"offset": self.offset, "limit": self.limit, "list": self.datas}
+        return {
+                "offset": self.offset, 
+                "limit": self.limit, 
+                "list": [x.toJson() for x in self.datas]
+            }
 
