@@ -17,7 +17,8 @@ def index():
     user = User.query.all()
     if user:
         logging.info(user)
-    return render_template('index.html')
+        print(user[0].nickName)
+    return render_template('index.html', user=user[0])
 
 @main.route('/json', methods=['GET', 'POST'])
 def testJson():
