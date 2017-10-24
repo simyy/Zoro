@@ -30,10 +30,13 @@ class BaseModel:
         self.db.session.add(self)
         self.db.session.commit()
 
-    def delete(self):
+    def delete(self, soft=False):
         '''delete by status'''
-        self.isDeleted = 1
-        self.save()
+        if soft:
+            self.isDeleted = 1
+            self.save()
+        else:
+            self.db.session.delete(self)
 
     def __str__(self):
         return '<%s %s>' % (type(self).__name__ ,self.id)  
@@ -42,10 +45,10 @@ class BaseModel:
         return '<%s %s>' % (type(self).__name__ ,self.id)  
 
     @classmethod
-    def deleteById(cls, id):
+    def deleteById(cls, id, soft=True):
         res = cls.query.filter_by(id=id).first()
         if res:
-            res.delete()
+            res.delete(soft=soft)
 
     @classmethod
     def query(cls):

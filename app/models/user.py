@@ -8,7 +8,8 @@ class User(db.Model, BaseModel):
 
     __tablename__ = 'user'
 
-    id   = Column(BigInteger, primary_key=True)
+    id = Column(BigInteger, primary_key=True)
+    mobile = Column(String(64))
     unionId = Column(String(256))
     nickName = Column(String(256))
     avatarUrl = Column(String(1024))

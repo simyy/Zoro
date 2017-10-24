@@ -4,6 +4,6 @@
 from flask import Blueprint
 
 
-main = Blueprint('main', __name__)
+demo = Blueprint('demo', __name__)
 from . import views, errors
 

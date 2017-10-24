@@ -22,7 +22,7 @@ def create_app(config):
     db.init_app(app)
    
     # attack routes and cunstom err pages here
-    from app.main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
+    from app.demo import demo as demo_blueprint
+    app.register_blueprint(demo_blueprint)
 
     return app
