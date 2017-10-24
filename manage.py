@@ -2,9 +2,13 @@
 # encoding: utf-8
 
 import os
+import yaml
+import logging
 import werkzeug
 import werkzeug.debug
 import werkzeug.serving
+
+import config
 
 from app import create_app
 from app import db
@@ -17,9 +21,16 @@ from flask_migrate import MigrateCommand
 from gevent.wsgi import WSGIServer
 
 
-app = create_app(os.getenv('FLASK_CONFIG') or 'default')
+appConfig = config.config[os.getenv('FLASK_CONFIG') or 'default']
+
+app = create_app(appConfig)
 manager = Manager(app)
 migrate = Migrate(app, db)
+
+with open(appConfig.ROOT + '/logging.yaml') as f:
+    D = yaml.load(f)
+    D.setdefault('version', 1)
+    logging.config.dictConfig(D)
 
 def make_shell_context():
     return dict(app=app, db=db, models=models, logger=app.config.logger, exception=exception)
