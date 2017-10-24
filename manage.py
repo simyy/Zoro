@@ -33,7 +33,7 @@ with open(appConfig.ROOT + '/logging.yaml') as f:
     logging.config.dictConfig(D)
 
 def make_shell_context():
-    return dict(app=app, db=db, models=models, logger=app.config.logger, exception=exception)
+    return dict(app=app, db=db, models=models, exception=exception)
 
 
 manager.add_command("shell", Shell(make_context=make_shell_context))

@@ -37,6 +37,7 @@ class BaseModel:
             self.save()
         else:
             self.db.session.delete(self)
+            self.db.session.commit()
 
     def __str__(self):
         return '<%s %s>' % (type(self).__name__ ,self.id)  
