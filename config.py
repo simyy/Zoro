@@ -5,7 +5,7 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
-APP_NAME = 'Zoro'
+APP_NAME = 'zoro'
 
 
 class Config:
@@ -19,7 +19,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost/Zoro?charset=utf8"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost/zoro?charset=utf8"
     ROOT = "/Users/yxd/self/zoro/src"
 
 
@@ -29,7 +29,7 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost/Zoro?charset=utf8"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost/zoro?charset=utf8"
     ROOT = "/opt/work/zoro/src"
 
 
