@@ -1,14 +1,34 @@
 {% extends "base.html" %}
-{% block title %}Index{% endblock %}
+{% block title %}Qiuar{% endblock %}
 {% block head %}
     {{ super() }}
     <style type="text/css">
-        .important { color: #336699; }
+    #waitingflag {
+        color: #777;    
+        font-size: 5em;
+    }
+    #waiting img {
+        width: 55em;
+    }
     </style>
 {% endblock %}
 {% block content %}
-    <h1>Index</h1>
-    <p class="important">
-      Welcome on my awesome homepage.
-    </p>
+<div id="waiting" class="displaycenter">
+    <div class="row">
+        <div>
+            <img src="static/img/waiting.jpeg" />
+        </div>
+        <div>
+            <p id="waitingflag" class="displaycenter">敬请期待</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+<!-- script -->
+{% block css %}
+{% endblock %}
+
+{% block script %}
 {% endblock %}
