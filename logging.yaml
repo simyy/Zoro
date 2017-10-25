@@ -14,7 +14,7 @@ handlers:
         formatter: default
         filename: /opt/logs/zoro/error.log
         maxBytes: 1024
-        backupCount: 3
+        #backupCount: 3
         encoding: utf8
     info:
         class: logging.handlers.RotatingFileHandler
@@ -22,7 +22,6 @@ handlers:
         formatter: default
         filename: /opt/logs/zoro/info.log
         maxBytes: 1024
-        backupCount: 3
         encoding: utf8
 loggers:
     Zoro:
