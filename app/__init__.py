@@ -23,6 +23,8 @@ def create_app(config):
    
     # attack routes and cunstom err pages here
     from app.demo import demo as demo_blueprint
+    from app.index import index as index_blueprint
     app.register_blueprint(demo_blueprint)
+    app.register_blueprint(index_blueprint)
 
     return app
