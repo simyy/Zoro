@@ -4,6 +4,7 @@ create database `zoro`;
 # 用户 
 create table `user` (
     `id` bigint(64) not null auto_increment primary key, 
+    `appId` int(1) not null comment '应用ID',
     `mobile` varchar(64) default null comment '手机号',
     `unionId` varchar(64) not null comment '微信唯一ID',
     `nickName` varchar(256) not null comment '用户昵称',

@@ -30,7 +30,7 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost/zoro?charset=utf8"
-    ROOT = "/opt/work/zoro/src"
+    ROOT = "/www/zoro/src"
 
 
 config = {
