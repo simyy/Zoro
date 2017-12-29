@@ -6,5 +6,5 @@ if [[ $# == 1 && "$1" == "debug" ]]; then
     python manage.py runserver --port=4000
 else
     export FLASK_CONFIG="production"
-    /opt/work/zoro/bin/python /opt/work/zoro/src/manage.py runserver --port 4000
+    /www/zoro/bin/python /www/zoro/src/manage.py runserver --port 4000
 fi
