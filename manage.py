@@ -41,7 +41,7 @@ manager.add_command("db", MigrateCommand)
 
 
 @manager.command
-def runserver(host="127.0.0.1", port=4000):
+def runserver(host="127.0.0.1", port=4000, env='product'):
     """
     run a gevent-based WSGI server
     """
@@ -58,7 +58,7 @@ def runserver(host="127.0.0.1", port=4000):
         print(" * Running on http://%s:%d" % (host, port))
         server.serve_forever()
 
-    if app.config.get("DEBUG", False):
+    if env == 'debug':
         from gevent import monkey
         monkey.patch_all()
         werkzeug.serving.run_with_reloader(serve, reloader_type="auto") 
