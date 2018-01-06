@@ -19,6 +19,7 @@ class Response:
         res = {'err': self.err, 'msg': self.msg, 'data': self.data}
         return jsonify(res)
 
+
 class ErrorResponse(Response):
     '''
     Error Response

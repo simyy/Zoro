@@ -22,11 +22,6 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost/zoro?charset=utf8"
     ROOT = "/www/zoro"
 
-
-class TestingConfig(Config):
-    DEBUG = True
-    TESTING = True
-
 class ProductionConfig(Config):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@localhost/zoro?charset=utf8"
@@ -35,7 +30,6 @@ class ProductionConfig(Config):
 
 config = {
     'development': DevelopmentConfig,
-    'testing': TestingConfig,
     'production': ProductionConfig,
     'default': DevelopmentConfig,
 }

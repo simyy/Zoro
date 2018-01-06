@@ -27,10 +27,12 @@ app = create_app(appConfig)
 manager = Manager(app)
 migrate = Migrate(app, db)
 
+
 with open(appConfig.ROOT + '/logging.yaml') as f:
     D = yaml.load(f)
     D.setdefault('version', 1)
     logging.config.dictConfig(D)
+
 
 def make_shell_context():
     return dict(app=app, db=db, models=models, exception=exception)
