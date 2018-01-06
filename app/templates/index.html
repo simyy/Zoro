@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% block title %}Qiuar{% endblock %}
 {% block head %}
     {{ super() }}
     <style type="text/css">
@@ -10,9 +9,11 @@
     #waiting img {
         width: 55em;
     }
+    {% from 'welcome.html' import wlcss %}
     </style>
 {% endblock %}
 {% block content %}
+    {% from 'welcome.html' import wlhtml %}
 <div id="waiting" class="displaycenter">
     <div class="row">
         <div>
